@@ -50,6 +50,8 @@ In addition to the webpack entry file, there will be three scripts involved in t
 
 `word.js`: this will handle how many points will be given for each word.
 
+`trie.js`: using the trie data structure to check valid words in dictionary
+
 `dictionary.txt`: this will hold all valid words which submissions will be checked against.
 
 ### Implementation Timeline

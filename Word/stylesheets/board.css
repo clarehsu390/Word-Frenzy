@@ -1,0 +1,38 @@
+body {
+  background-color: black;
+}
+
+.title {
+   animation: pulse 5s infinite;
+   color: white;
+   font-family:'Quicksand', sans-serif;
+   text-align: center;
+}
+
+.board {
+  margin: 20px auto 40px;
+  width: 450px;
+  height: 450px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 48px;
+  color: #FF69B4;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.square {
+  margin:3px;
+  width:45px;
+  height:45px;
+  border: solid 2px #FF69B4;
+  line-height:45px;
+  text-align:center;
+  background: black;
+  box-shadow:0 0 5px rgba(0,0,0,0.1);
+  border-radius:5px;
+  float:left;
+}
+
+.highlight {
+  background: yellow;
+}
