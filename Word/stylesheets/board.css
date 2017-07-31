@@ -16,7 +16,7 @@ body {
   padding: 20px;
   border-radius: 10px;
   font-size: 48px;
-  color: #FF69B4;
+  color: white;
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -24,7 +24,7 @@ body {
   margin:3px;
   width:45px;
   height:45px;
-  border: solid 2px #FF69B4;
+  border: solid 2px white;
   line-height:45px;
   text-align:center;
   background: black;
@@ -34,5 +34,5 @@ body {
 }
 
 .highlight {
-  background: yellow;
+  background: #099FFF;
 }

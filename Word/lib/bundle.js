@@ -70,7 +70,7 @@
 const Square = __webpack_require__(1);
 const Board = __webpack_require__(2);
 const Word = __webpack_require__(3);
-const Dictionary = __webpack_require__(4);
+// const Dictionary = require("../assets/dictionary.txt");
 
 document.addEventListener("DOMContentLoaded", () => {
  new Board(8);
@@ -147,12 +147,6 @@ class Word {
 
 module.exports = Word;
 
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/kuhlarebear/Documents/Word/lib/dictionary.txt'\n    at Error (native)");
 
 /***/ })
 /******/ ]);
