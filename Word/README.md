@@ -44,7 +44,7 @@ In addition to the webpack entry file, there will be three scripts involved in t
 
 `board.js`: this script will handle the logic for creating and updating the necessary `Easel.js` elements and rendering them to the DOM. Squares must be adjacent to one another. Board will be populated in a random order, based on the frequency each letter appears in the English language. Board may decrease in size as the player passes more levels.
 
-`square.js`: this script will handle the logic behind the scenes.  This will handle any interaction the user has with the board. The Square objects that are clicked on will be checked against a dictionary. Points will be added based on the length of the word.
+`square.js`: this script will handle the logic behind the scenes.  This will handle any interaction the user has with the board. The Square objects that are clicked on will be checked against a dictionary. Points will be added based on the length of the word. Use `jquery.event.drag`
 
 `word.js`: this will handle how many points will be given for each word.
 
