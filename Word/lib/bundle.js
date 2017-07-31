@@ -152,7 +152,7 @@ module.exports = Word;
 /* 4 */
 /***/ (function(module, exports) {
 
-
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/kuhlarebear/Documents/Word/lib/dictionary.txt'\n    at Error (native)");
 
 /***/ })
 /******/ ]);
