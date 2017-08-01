@@ -83,10 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 class Square {
   constructor() {
-
+    this.letter = "";
   }
 
-  
+  letter() {
+    
+  }
 }
 
 

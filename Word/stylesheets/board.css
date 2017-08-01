@@ -3,10 +3,11 @@ body {
 }
 
 .title {
-   animation: pulse 5s infinite;
-   color: white;
-   font-family:'Quicksand', sans-serif;
-   text-align: center;
+  font: 700 100px 'Quicksand', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  color: white;
 }
 
 .board {

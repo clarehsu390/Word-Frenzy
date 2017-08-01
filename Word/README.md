@@ -36,8 +36,7 @@ This app will consist of a single screen with a randomly generated word grid, a 
 
 This project will be implemented with the following technologies:
 
-- Vanilla JavaScript and `jquery` for overall structure and game logic,
-- `Easel.js` with `HTML5 Canvas` for DOM manipulation and rendering,
+- Vanilla JavaScript and `jquery` for overall structure and game logic
 - Webpack to bundle and serve up the various scripts.
 
 In addition to the webpack entry file, there will be three scripts involved in this project:
@@ -90,6 +89,6 @@ In addition to the webpack entry file, there will be three scripts involved in t
 
 To expand on this word game, I would like to add the following features:
 
+- [ ] Have the option to select individual squares as well as click and drag
 - [ ] Add themed levels (i.e. Find all words related to animals.)
 - [ ] Design it as a studying/educational tool (i.e. Have definitions of vocabulary words)
-- [ ] Have the option to select individual squares as well as click and drag
