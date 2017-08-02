@@ -5,4 +5,5 @@ const Word = require("./word");
 
 document.addEventListener("DOMContentLoaded", () => {
  new Board(8);
+ new Word();
 });

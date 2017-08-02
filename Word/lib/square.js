@@ -1,9 +1,12 @@
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWQYZ";
+
 class Square {
   constructor() {
     this.letter = "";
   }
-
-  letter() {
-    
-  }
 }
+
+Square.LETTERS = {
+
+};
+module.export = Square;

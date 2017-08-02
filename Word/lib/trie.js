@@ -29,21 +29,25 @@ class Trie {
         currentNode = newNode;
       }
     }
-    currentNode.isValidWord = true;
+    //full word!åå
+    currentNode.isWord = true;
   }
 
-  isValidWord(word) {
+  contains(word) {
     let currentNode = this.root;
+    //check to see if character node exists in children
     for(let i=0; i < word; i++) {
       let char = word[i];
       if (currentNode.children[char]){
+        //next depth of the trie
         currentNode = currentNode.children[char];
       }
       else {
+        //not a valid word
         return false;
       }
     }
-    return currentNode.isValidWord;
+    return currentNode.isWord;
 
 
   }

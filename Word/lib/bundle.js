@@ -74,59 +74,82 @@ const Word = __webpack_require__(3);
 
 document.addEventListener("DOMContentLoaded", () => {
  new Board(8);
+ new Word();
 });
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(module) {const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWQYZ";
 
 class Square {
   constructor() {
     this.letter = "";
   }
-
-  letter() {
-    
-  }
 }
 
+Square.LETTERS = {
+
+};
+module.export = Square;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)(module)))
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
+const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O", "O", "O", "A", "A", "A", "A", "I", "I", "I", "I", "N", "N", "S", "S", "R", "R", "H", "H", "D", "L", "L", "U", "U", "C", "C","M",
+"F", "Y", "W", "G", "P", "B", "V", "K", "X", "Q", "J", "Z"];
+
 class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
     this.handleClick();
+    this.getLetter();
+    this.word = "";
   }
 
   makeBoard(x) {
     for (let rows=0; rows < x; rows++) {
       for (let columns=0; columns < x; columns++){
-        $(".board").append("<div class='square'>A</div>");
+        let square = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+        $(".board").append(`<div class='square'>${square}</div>`);
       }
     }
   }
 
+  getLetter() {
+
+  }
+
   handleClick() {
     let clicking = false;
+    let word = "";
     $(".square").mousedown(function(){
        clicking = true;
       $(this).toggleClass('highlight');
+      word += $(this).text();
+      $("#potential").text(word);
+      console.log(word);
       return false;
     });
 
     $(".square").mouseover(function(){
       if (clicking) {
         $(this).toggleClass("highlight");
+        word += $(this).text();
+        $("#potential").text(word);
       }
     });
 
     $(document).mouseup(function(){
       $(".square").removeClass("highlight");
       clicking = false;
+      word = "";
+      $("#potential").text(word);
     });
   }
 
@@ -144,10 +167,55 @@ class Word {
   constructor() {
     this.word = "";
   }
+
+
+  getLetter() {
+    let clicking = false;
+    $(".square").mousedown(function(){
+      this.word += $(this).text();
+      console.log(this.word);
+    });
+
+    $(document).mouseup(function(){
+      $(".square").removeClass("highlight");
+      clicking = false;
+    });
+  }
 }
 
 
+
 module.exports = Word;
+
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
 
 
 /***/ })
