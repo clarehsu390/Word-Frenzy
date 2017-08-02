@@ -30,7 +30,7 @@ h1 {
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   margin: auto;
-  position: absolute;
+
 
 
 }
@@ -91,4 +91,9 @@ h1 {
   font-family: 'Quicksand', sans-serif;
   color: #F2D388;
 
+}
+
+.score {
+  font-family: 'Quicksand', sans-serif;
+  color: white;
 }

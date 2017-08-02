@@ -29,7 +29,7 @@ class Trie {
         currentNode = newNode;
       }
     }
-    //full word!åå
+    //full word!
     currentNode.isWord = true;
   }
 

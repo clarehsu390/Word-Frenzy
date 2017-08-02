@@ -203,6 +203,8 @@ class Game {
     this.board = new Board(8);
     this.handleClick = this.handleClick.bind(this);
     this.trie = new Trie;
+    this.score = 0;
+    this.interval = null;
   }
 
   dictionary(data) {
@@ -214,12 +216,13 @@ class Game {
   }
 
   handleClick() {
-    console.log(this.trie);
+    let trie = this.trie;
+    let score = this.score;
+    console.log(this.dictionary);
     let word = "";
     let display = "";
     let clicking = false;
     let wordArr = [];
-    console.log(wordArr);
     $(".square").mousedown($.proxy(function(){
        clicking = true;
       $(this).toggleClass('highlight');
@@ -238,26 +241,30 @@ class Game {
       }
     });
 
-    $(document).mouseup(function(){
+    $(".square").mouseup(function(){
       $(".square").removeClass("highlight");
       wordArr.push(word);
       clicking = false;
       display = "";
       $("#potential").text(display);
+      if (trie.contains(word)) {
+        score += 5;
+        $(".score").text(`Score: ${score}`);
+      }
       word = "";
     });
   }
 
-  // mouseUp() {
-  //   let wordArr = [];
-  //   $(document).mouseover(function(){
-  //     wordArr.push($("#potential").text());
-  //   });
-  //   console.log(wordArr);
-  //   if (this.trie.contains(wordArr[-1])) {
-  //     console.log("hello");
-  //   }
-  // }
+  startInterval() {
+    this.interval = setInterval(this.timer, 1000);
+  }
+
+  timer() {
+    this.interval -= 1;
+    if (this.interval <= 0) {
+      $(".timer").text(`Time's up!`);
+    }
+  }
 
 
 }
@@ -301,7 +308,7 @@ class Trie {
         currentNode = newNode;
       }
     }
-    //full word!åå
+    //full word!
     currentNode.isWord = true;
   }
 
