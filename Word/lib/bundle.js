@@ -82,11 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWQYZ";
+/* WEBPACK VAR INJECTION */(function(module) {const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O", "O", "O", "A", "A", "A", "A", "I", "I", "I", "I", "N", "N", "S", "S", "R", "R", "H", "H", "D", "L", "L", "U", "U", "C", "C","M",
+"F", "Y", "W", "G", "P", "B", "V", "K", "X", "Q", "J", "Z"];
 
 class Square {
   constructor() {
     this.letter = "";
+  }
+
+  randomLetter() {
+    return LETTERS[Math.floor(Math.random() * LETTERS.length)];
   }
 }
 
@@ -108,31 +113,28 @@ class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
     this.handleClick();
-    this.getLetter();
     this.word = "";
   }
 
   makeBoard(x) {
     for (let rows=0; rows < x; rows++) {
       for (let columns=0; columns < x; columns++){
-        let square = LETTERS[Math.floor(Math.random() * LETTERS.length)];
-        $(".board").append(`<div class='square'>${square}</div>`);
+        let letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+        $(".board").append(`<div class='square'>${letter}</div>`);
       }
     }
   }
 
-  getLetter() {
-
-  }
-
   handleClick() {
-    let clicking = false;
     let word = "";
+    let display = "";
+    let clicking = false;
     $(".square").mousedown(function(){
        clicking = true;
       $(this).toggleClass('highlight');
       word += $(this).text();
-      $("#potential").text(word);
+      display += $(this).text();
+      $("#potential").text(display);
       console.log(word);
       return false;
     });
@@ -141,15 +143,16 @@ class Board {
       if (clicking) {
         $(this).toggleClass("highlight");
         word += $(this).text();
-        $("#potential").text(word);
+        display += $(this).text();
+        $("#potential").text(display);
       }
     });
 
     $(document).mouseup(function(){
       $(".square").removeClass("highlight");
       clicking = false;
-      word = "";
-      $("#potential").text(word);
+      display = "";
+      $("#potential").text(display);
     });
   }
 

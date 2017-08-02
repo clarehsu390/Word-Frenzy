@@ -5,31 +5,28 @@ class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
     this.handleClick();
-    this.getLetter();
     this.word = "";
   }
 
   makeBoard(x) {
     for (let rows=0; rows < x; rows++) {
       for (let columns=0; columns < x; columns++){
-        let square = LETTERS[Math.floor(Math.random() * LETTERS.length)];
-        $(".board").append(`<div class='square'>${square}</div>`);
+        let letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+        $(".board").append(`<div class='square'>${letter}</div>`);
       }
     }
   }
 
-  getLetter() {
-
-  }
-
   handleClick() {
-    let clicking = false;
     let word = "";
+    let display = "";
+    let clicking = false;
     $(".square").mousedown(function(){
        clicking = true;
       $(this).toggleClass('highlight');
       word += $(this).text();
-      $("#potential").text(word);
+      display += $(this).text();
+      $("#potential").text(display);
       console.log(word);
       return false;
     });
@@ -38,15 +35,16 @@ class Board {
       if (clicking) {
         $(this).toggleClass("highlight");
         word += $(this).text();
-        $("#potential").text(word);
+        display += $(this).text();
+        $("#potential").text(display);
       }
     });
 
     $(document).mouseup(function(){
       $(".square").removeClass("highlight");
       clicking = false;
-      word = "";
-      $("#potential").text(word);
+      display = "";
+      $("#potential").text(display);
     });
   }
 
