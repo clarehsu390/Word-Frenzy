@@ -60,26 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Square = __webpack_require__(1);
-const Board = __webpack_require__(2);
-const Word = __webpack_require__(3);
-// const Dictionary = require("../assets/dictionary.txt");
-
-document.addEventListener("DOMContentLoaded", () => {
- new Board(8);
- new Word();
-});
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O", "O", "O", "A", "A", "A", "A", "I", "I", "I", "I", "N", "N", "S", "S", "R", "R", "H", "H", "D", "L", "L", "U", "U", "C", "C","M",
@@ -100,101 +85,10 @@ Square.LETTERS = {
 };
 module.export = Square;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O", "O", "O", "A", "A", "A", "A", "I", "I", "I", "I", "N", "N", "S", "S", "R", "R", "H", "H", "D", "L", "L", "U", "U", "C", "C","M",
-"F", "Y", "W", "G", "P", "B", "V", "K", "X", "Q", "J", "Z"];
-
-class Board {
-  constructor(x) {
-    this.board = this.makeBoard(x);
-    this.handleClick();
-    this.word = "";
-  }
-
-  makeBoard(x) {
-    for (let rows=0; rows < x; rows++) {
-      for (let columns=0; columns < x; columns++){
-        let letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
-        $(".board").append(`<div class='square'>${letter}</div>`);
-      }
-    }
-  }
-
-  handleClick() {
-    let word = "";
-    let display = "";
-    let clicking = false;
-    $(".square").mousedown(function(){
-       clicking = true;
-      $(this).toggleClass('highlight');
-      word += $(this).text();
-      display += $(this).text();
-      $("#potential").text(display);
-      console.log(word);
-      return false;
-    });
-
-    $(".square").mouseover(function(){
-      if (clicking) {
-        $(this).toggleClass("highlight");
-        word += $(this).text();
-        display += $(this).text();
-        $("#potential").text(display);
-      }
-    });
-
-    $(document).mouseup(function(){
-      $(".square").removeClass("highlight");
-      clicking = false;
-      display = "";
-      $("#potential").text(display);
-    });
-  }
-
-}
-
-
-module.exports = Board;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-class Word {
-  constructor() {
-    this.word = "";
-  }
-
-
-  getLetter() {
-    let clicking = false;
-    $(".square").mousedown(function(){
-      this.word += $(this).text();
-      console.log(this.word);
-    });
-
-    $(document).mouseup(function(){
-      $(".square").removeClass("highlight");
-      clicking = false;
-    });
-  }
-}
-
-
-
-module.exports = Word;
-
-
-/***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -219,6 +113,220 @@ module.exports = function(module) {
 	}
 	return module;
 };
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O", "O", "O", "A", "A", "A", "A", "I", "I", "I", "I", "N", "N", "S", "S", "R", "R", "H", "H", "D", "L", "L", "U", "U", "C", "C","M",
+"F", "Y", "W", "G", "P", "B", "V", "K", "X", "Q", "J", "Z"];
+
+class Board {
+  constructor(x) {
+    this.board = this.makeBoard(x);
+    this.word = "";
+  }
+
+  makeBoard(x) {
+    for (let rows=0; rows < x; rows++) {
+      for (let columns=0; columns < x; columns++){
+        let letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+        $(".board").append(`<div class='square' value=${letter}>${letter}</div>`);
+      }
+    }
+  }
+
+
+
+}
+
+
+module.exports = Board;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+// class Word {
+//   constructor() {
+//     this.word = "";
+//   }
+//
+//
+//   getLetter() {
+//     let clicking = false;
+//     $(".square").mousedown(function(){
+//       this.word += $(this).text();
+//       console.log(this.word);
+//     });
+//
+//     $(document).mouseup(function(){
+//       $(".square").removeClass("highlight");
+//       clicking = false;
+//     });
+//   }
+// }
+//
+//
+//
+// module.exports = Word;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+const Game = __webpack_require__(5);
+
+$( () => {
+ const game = new Game();
+ game.handleClick();
+});
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const Square = __webpack_require__(0);
+const Board = __webpack_require__(2);
+const Word = __webpack_require__(3);
+const Trie = __webpack_require__(6);
+
+class Game {
+  constructor() {
+    jQuery.get('https://raw.githubusercontent.com/clarehsu390/Word-Frenzy/master/Word/assets/dictionary.txt', (data) => this.dictionary(data));
+    this.dictionary = this.dictionary.bind(this);
+    this.board = new Board(8);
+    this.handleClick = this.handleClick.bind(this);
+    this.trie = new Trie;
+  }
+
+  dictionary(data) {
+    const words = data.split("\n");
+    words.pop();
+    words.forEach(word => {
+     this.trie.add(word);
+    });
+  }
+
+  handleClick() {
+    console.log(this.trie);
+    let word = "";
+    let display = "";
+    let clicking = false;
+    let wordArr = [];
+    console.log(wordArr);
+    $(".square").mousedown($.proxy(function(){
+       clicking = true;
+      $(this).toggleClass('highlight');
+      word += $(this).text();
+      display += $(this).text();
+      $("#potential").text(display);
+      return false;
+    }));
+
+    $(".square").mouseover(function(){
+      if (clicking) {
+        $(this).toggleClass("highlight");
+        word += $(this).text();
+        display += $(this).text();
+        $("#potential").text(display);
+      }
+    });
+
+    $(document).mouseup(function(){
+      $(".square").removeClass("highlight");
+      wordArr.push(word);
+      clicking = false;
+      display = "";
+      $("#potential").text(display);
+      word = "";
+    });
+  }
+
+  // mouseUp() {
+  //   let wordArr = [];
+  //   $(document).mouseover(function(){
+  //     wordArr.push($("#potential").text());
+  //   });
+  //   console.log(wordArr);
+  //   if (this.trie.contains(wordArr[-1])) {
+  //     console.log("hello");
+  //   }
+  // }
+
+
+}
+
+
+module.exports = Game;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+class TrieNode {
+  constructor(char) {
+    this.char = char;
+    this.isWord = false;
+    this.children = {};
+  }
+
+  addChild(node) {
+    this.children[node.char] = node;
+  }
+}
+
+class Trie {
+  constructor() {
+    this.root = new TrieNode('');
+  }
+
+  add(word) {
+    let currentNode = this.root;
+
+    for(let i=0; i < word; i++) {
+      let char = word[i];
+      if(currentNode.children[char]) {
+        currentNode = currentNode.children[char];
+      }
+      else {
+        let newNode = new TrieNode(char);
+        currentNode.addChild(newNode);
+        currentNode = newNode;
+      }
+    }
+    //full word!åå
+    currentNode.isWord = true;
+  }
+
+  contains(word) {
+    let currentNode = this.root;
+    //check to see if character node exists in children
+    for(let i=0; i < word; i++) {
+      let char = word[i];
+      if (currentNode.children[char]){
+        //next depth of the trie
+        currentNode = currentNode.children[char];
+      }
+      else {
+        //not a valid word
+        return false;
+      }
+    }
+    return currentNode.isWord;
+
+
+  }
+
+}
+
+module.exports = Trie;
 
 
 /***/ })

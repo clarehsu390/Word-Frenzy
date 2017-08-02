@@ -4,7 +4,6 @@ const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O"
 class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
-    this.handleClick();
     this.word = "";
   }
 
@@ -12,41 +11,12 @@ class Board {
     for (let rows=0; rows < x; rows++) {
       for (let columns=0; columns < x; columns++){
         let letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
-        $(".board").append(`<div class='square'>${letter}</div>`);
+        $(".board").append(`<div class='square' value=${letter}>${letter}</div>`);
       }
     }
   }
 
-  handleClick() {
-    let word = "";
-    let display = "";
-    let clicking = false;
-    $(".square").mousedown(function(){
-       clicking = true;
-      $(this).toggleClass('highlight');
-      word += $(this).text();
-      display += $(this).text();
-      $("#potential").text(display);
-      console.log(word);
-      return false;
-    });
 
-    $(".square").mouseover(function(){
-      if (clicking) {
-        $(this).toggleClass("highlight");
-        word += $(this).text();
-        display += $(this).text();
-        $("#potential").text(display);
-      }
-    });
-
-    $(document).mouseup(function(){
-      $(".square").removeClass("highlight");
-      clicking = false;
-      display = "";
-      $("#potential").text(display);
-    });
-  }
 
 }
 

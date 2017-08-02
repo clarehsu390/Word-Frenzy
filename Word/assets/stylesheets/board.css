@@ -13,16 +13,26 @@ h1 {
   font-size: 72px;
 }
 
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .board {
   margin: 20px auto 40px;
   width: 450px;
   height: 450px;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   font-size: 36px;
   color: white;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
+  margin: auto;
+  position: absolute;
+
+
 }
 
 .square {
@@ -68,5 +78,17 @@ h1 {
 }
 
 #potential {
+
+}
+
+.submitted {
+  /*flex: 0.3;
+  width: 100px;
+  height: 250px;
+  background: white;
+  margin: 0;
+  border-radius: 5px;*/
+  font-family: 'Quicksand', sans-serif;
+  color: #F2D388;
 
 }
