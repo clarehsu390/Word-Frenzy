@@ -5,6 +5,7 @@ class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
     this.word = "";
+    this.replace();
   }
 
   makeBoard(x) {
@@ -14,6 +15,15 @@ class Board {
         $(".board").append(`<div class='square' value=${letter}>${letter}</div>`);
       }
     }
+  }
+
+  replace() {
+    $(".square").mouseup(function() {
+      $(this).text(`${LETTERS[Math.floor(Math.random() * LETTERS.length)]}`);
+      $(".selected").addClass("animated fadeIn");
+      $(".square").removeClass("selected");
+    });
+
   }
 
 

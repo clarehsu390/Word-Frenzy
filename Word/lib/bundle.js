@@ -126,6 +126,7 @@ class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
     this.word = "";
+    this.replace();
   }
 
   makeBoard(x) {
@@ -135,6 +136,15 @@ class Board {
         $(".board").append(`<div class='square' value=${letter}>${letter}</div>`);
       }
     }
+  }
+
+  replace() {
+    $(".square").mouseup(function() {
+      $(this).text(`${LETTERS[Math.floor(Math.random() * LETTERS.length)]}`);
+      $(".selected").addClass("animated fadeIn");
+      $(".square").removeClass("selected");
+    });
+
   }
 
 
@@ -184,6 +194,7 @@ const Game = __webpack_require__(5);
 $( () => {
  const game = new Game();
  game.handleClick();
+ game.startButton();
 });
 
 
@@ -202,9 +213,14 @@ class Game {
     this.dictionary = this.dictionary.bind(this);
     this.board = new Board(8);
     this.handleClick = this.handleClick.bind(this);
-    this.trie = new Trie;
+    this.startInterval = this.startInterval.bind(this);
     this.score = 0;
     this.interval = null;
+    this.trie = new Trie();
+    this.time = 120;
+    this.timer = this.timer.bind(this);
+    this.newGame = this.newGame.bind(this);
+    this.startButton();
   }
 
   dictionary(data) {
@@ -218,7 +234,7 @@ class Game {
   handleClick() {
     let trie = this.trie;
     let score = this.score;
-    console.log(this.dictionary);
+    console.log(this.trie);
     let word = "";
     let display = "";
     let clicking = false;
@@ -226,6 +242,7 @@ class Game {
     $(".square").mousedown($.proxy(function(){
        clicking = true;
       $(this).toggleClass('highlight');
+      $(this).toggleClass("selected");
       word += $(this).text();
       display += $(this).text();
       $("#potential").text(display);
@@ -235,6 +252,7 @@ class Game {
     $(".square").mouseover(function(){
       if (clicking) {
         $(this).toggleClass("highlight");
+        $(this).toggleClass("selected");
         word += $(this).text();
         display += $(this).text();
         $("#potential").text(display);
@@ -247,23 +265,47 @@ class Game {
       clicking = false;
       display = "";
       $("#potential").text(display);
-      if (trie.contains(word)) {
+      console.log(word);
+      if (trie.contains(word.toLowerCase()) && word.length >= 3) {
+        console.log("hello");
         score += 5;
-        $(".score").text(`Score: ${score}`);
+        $(".score").text(`${score}`);
+      }
+
+      if (word.length > 3 && trie.contains(word.toLowerCase())) {
+        score += (word.length - 3);
+        $(".score").text(`${score}`);
       }
       word = "";
     });
   }
+
+
 
   startInterval() {
     this.interval = setInterval(this.timer, 1000);
   }
 
   timer() {
-    this.interval -= 1;
-    if (this.interval <= 0) {
+    this.time -= 1;
+    if (this.time <= 0) {
       $(".timer").text(`Time's up!`);
     }
+    else {
+      $(".timer").text(`${this.time}`);
+    }
+  }
+
+  newGame() {
+    $(".start").remove();
+    this.startInterval();
+    $("body").removeClass("gray");
+  }
+
+  startButton() {
+    $(".game").append("<button class=start>START</button>");
+    $(".start").on("click", this.newGame);
+
   }
 
 
@@ -297,7 +339,7 @@ class Trie {
   add(word) {
     let currentNode = this.root;
 
-    for(let i=0; i < word; i++) {
+    for(let i=0; i < word.length; i++) {
       let char = word[i];
       if(currentNode.children[char]) {
         currentNode = currentNode.children[char];
@@ -315,7 +357,7 @@ class Trie {
   contains(word) {
     let currentNode = this.root;
     //check to see if character node exists in children
-    for(let i=0; i < word; i++) {
+    for(let i=0; i < word.length; i++) {
       let char = word[i];
       if (currentNode.children[char]){
         //next depth of the trie

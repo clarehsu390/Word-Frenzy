@@ -18,7 +18,7 @@ class Trie {
   add(word) {
     let currentNode = this.root;
 
-    for(let i=0; i < word; i++) {
+    for(let i=0; i < word.length; i++) {
       let char = word[i];
       if(currentNode.children[char]) {
         currentNode = currentNode.children[char];
@@ -36,7 +36,7 @@ class Trie {
   contains(word) {
     let currentNode = this.root;
     //check to see if character node exists in children
-    for(let i=0; i < word; i++) {
+    for(let i=0; i < word.length; i++) {
       let char = word[i];
       if (currentNode.children[char]){
         //next depth of the trie

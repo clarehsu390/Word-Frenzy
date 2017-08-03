@@ -3,6 +3,10 @@ body {
 
 }
 
+.gray {
+  background-color: gray;
+}
+
 h1 {
   color: #fff;
   font-family: 'Megrim';
@@ -15,12 +19,12 @@ h1 {
 
 .body {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
 }
 
 .board {
-  margin: 20px auto 40px;
   width: 450px;
   height: 450px;
   padding: 10px;
@@ -30,9 +34,12 @@ h1 {
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   margin: auto;
+}
 
-
-
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .square {
@@ -49,17 +56,33 @@ h1 {
   box-shadow: 0px 5px 0px #7A9D96;
 }
 
+.square:hover{
+  cursor: pointer;
+}
+
  .square:active {
   box-shadow: 0 3px 0 #7A9D96;
   top: 3px;
 }
 
+@-webkit-keyframes wiggle {
+   0% { -webkit-transform: translate(2px, 0px); }
+   20% { -webkit-transform: translate(-2px, 0px); }
+   40% { -webkit-transform: translate(2px, 0px); }
+   60% { -webkit-transform: translate(-2px, 0px); }
+   80% { -webkit-transform: translate(2px, 0px); }
+   100% { -webkit-transform: translate(0px, 0px); }
+}
 
 .highlight {
   background: #874C62;
   box-shadow: 0 3px 0 #7A9D96;
   color: white;
   top: 3px;
+  -webkit-animation-name: wiggle;
+   -webkit-animation-duration: 500ms;
+   -webkit-transform-origin: 50% 50%;
+
 }
 
 .word {
@@ -77,8 +100,32 @@ h1 {
   background: white;
 }
 
-#potential {
+.start {
+  position: absolute;
+  top:0;
+  text-align: center;
+  bottom: 0;
+  background: linear-gradient(45deg,#A7D2CB,teal,#F2D388);
+  background-size: 400% 400%;
+  box-shadow: 1vw 1vw 0 #F2D388;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  z-index: 1;
+  margin: auto;
+  height: 50px;
+  width: 150px;
+  background-color: white;
+  font-family: 'Comfortaa';
+  font-size: 36px;
+  color: white;
+}
 
+.start:hover {
+  animation: gradient 10s ease infinite;
+    font-size: 2.05vw;
+    box-shadow: 0.2vw 0.2vw 0 #F2D388;
+  }
 }
 
 .submitted {
@@ -93,7 +140,13 @@ h1 {
 
 }
 
-.score {
+.total-score {
   font-family: 'Quicksand', sans-serif;
+  font-size: 36px;
   color: white;
+  width: 150px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
