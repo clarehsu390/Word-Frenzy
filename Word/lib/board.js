@@ -20,7 +20,7 @@ class Board {
   replace() {
     $(".square").mouseup(function() {
       $(this).text(`${LETTERS[Math.floor(Math.random() * LETTERS.length)]}`);
-      $(".selected").addClass("animated fadeIn");
+      $(".selected").addClass("animated slideInUp");
       $(".square").removeClass("selected");
     });
 

@@ -13,7 +13,7 @@ class Game {
     this.score = 0;
     this.interval = null;
     this.trie = new Trie();
-    this.time = 120;
+    this.time = 100;
     this.timer = this.timer.bind(this);
     this.newGame = this.newGame.bind(this);
     this.startButton();
@@ -57,20 +57,29 @@ class Game {
 
     $(".square").mouseup(function(){
       $(".square").removeClass("highlight");
-      wordArr.push(word);
       clicking = false;
       display = "";
       $("#potential").text(display);
-      console.log(word);
-      if (trie.contains(word.toLowerCase()) && word.length >= 3) {
-        console.log("hello");
+      if (trie.contains(word.toLowerCase()) && word.length >= 3
+      && !wordArr.includes(word)) {
+        wordArr.push(word);
         score += 5;
         $(".score").text(`${score}`);
+        $("#feedback").text('Great!');
+        $(".submitted").append(`<li>${word}</li>`);
       }
 
-      if (word.length > 3 && trie.contains(word.toLowerCase())) {
+      if (word.length > 3 &&
+        trie.contains(word.toLowerCase())
+      && !wordArr.includes(word)) {
+        wordArr.push(word);
         score += (word.length - 3);
         $(".score").text(`${score}`);
+        $("#feedback").text('What a superstar!');
+        $(".submitted").append(`<li>${word}</li>`);
+      }
+      if (!trie.contains(word.toLowerCase()) || word.length <= 2) {
+        $("#feedback").text("Try Again!");
       }
       word = "";
     });

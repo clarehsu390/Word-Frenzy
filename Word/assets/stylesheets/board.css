@@ -144,9 +144,11 @@ h1 {
   font-family: 'Quicksand', sans-serif;
   font-size: 36px;
   color: white;
-  width: 150px;
-  height: 80px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
+}
+
+.score {
+  text-align: center;
 }

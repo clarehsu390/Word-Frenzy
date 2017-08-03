@@ -3,6 +3,7 @@
     <title>Word Frenzy</title>
     <script src="https://unpkg.com/lodash@4.16.6"></script>
     <link rel="stylesheet" href="./assets/stylesheets/board.css">
+    <link rel="stylesheet" href="./assets/stylesheets/timer.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
@@ -20,10 +21,13 @@
         <span id="potential"></span>
       </div>
     <div class="board"></div>
+    <ul class="submitted">
+
+    </ul>
   </div>
   <div class="time-left">Time Left:
     <div class="timer">
-
+      100
     </div>
   </div>
     <div class="total-score">Score:
@@ -31,5 +35,6 @@
     </div>
     </div>
   </div>
+  <div id="feedback" class="animated slideUp"></div>
   </body>
 </html>
