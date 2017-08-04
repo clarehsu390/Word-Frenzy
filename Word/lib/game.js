@@ -13,7 +13,7 @@ class Game {
     this.score = 0;
     this.interval = null;
     this.trie = new Trie();
-    this.time = 5;
+    this.time = 100;
     this.timer = this.timer.bind(this);
     this.newGame = this.newGame.bind(this);
     this.reset = this.reset.bind(this);
