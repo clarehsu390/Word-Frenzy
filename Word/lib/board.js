@@ -19,7 +19,12 @@ class Board {
 
   replace() {
     $(".square").mouseup(function() {
-      $(this).text(`${LETTERS[Math.floor(Math.random() * LETTERS.length)]}`);
+      const $selected = $(".selected");
+      $selected.each(function(index) {
+        const letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+        let newLetter = $($selected[index]);
+        newLetter.text(letter);
+      });
       $(".selected").addClass("animated slideInUp");
       $(".square").removeClass("selected");
     });

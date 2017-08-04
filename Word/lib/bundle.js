@@ -67,16 +67,23 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O", "O", "O", "A", "A", "A", "A", "I", "I", "I", "I", "N", "N", "S", "S", "R", "R", "H", "H", "D", "L", "L", "U", "U", "C", "C","M",
-"F", "Y", "W", "G", "P", "B", "V", "K", "X", "Q", "J", "Z"];
+/* WEBPACK VAR INJECTION */(function(module) {const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const VOWELS = "AEIOU";
 
 class Square {
   constructor() {
-    this.letter = "";
+    this.squares = [];
+    this.randomLetter = this.randomLetter.bind(this);
   }
 
   randomLetter() {
-    return LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    let random = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    this.squares.push(random);
+
+  }
+
+  ensureVowel() {
+
   }
 }
 
@@ -140,7 +147,12 @@ class Board {
 
   replace() {
     $(".square").mouseup(function() {
-      $(this).text(`${LETTERS[Math.floor(Math.random() * LETTERS.length)]}`);
+      const $selected = $(".selected");
+      $selected.each(function(index) {
+        const letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+        let newLetter = $($selected[index]);
+        newLetter.text(letter);
+      });
       $(".selected").addClass("animated slideInUp");
       $(".square").removeClass("selected");
     });
@@ -269,7 +281,7 @@ class Game {
         wordArr.push(word);
         score += 5;
         $(".score").text(`${score}`);
-        $("#feedback").text('Great!');
+        $("#feedback").append('<li>Great!</li>');
         $(".submitted").append(`<li>${word}</li>`);
       }
 
@@ -279,13 +291,16 @@ class Game {
         wordArr.push(word);
         score += (word.length - 3);
         $(".score").text(`${score}`);
-        $("#feedback").text('What a superstar!');
+        $("#feedback").append('<li>What a superstar!</li>');
         $(".submitted").append(`<li>${word}</li>`);
       }
       if (!trie.contains(word.toLowerCase()) || word.length <= 2) {
-        $("#feedback").text("Try Again!");
+        $("#feedback").append("<li>Try Again!</li>");
       }
       word = "";
+      setTimeout(function() {
+        $("#feedback").empty();
+      }, 3000);
     });
   }
 
@@ -312,7 +327,7 @@ class Game {
   }
 
   startButton() {
-    $(".game").append("<button class=start>START</button>");
+    $(".body").append("<button class=start>START</button>");
     $(".start").on("click", this.newGame);
 
   }

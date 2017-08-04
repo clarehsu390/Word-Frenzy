@@ -1,6 +1,7 @@
 body {
   background-color: #A7D2CB;
 
+
 }
 
 .gray {
@@ -19,15 +20,16 @@ h1 {
 
 .body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  position: absolute;
+
 }
 
 .board {
+  margin: 40px;
   width: 450px;
   height: 450px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   font-size: 36px;
   color: white;
@@ -146,7 +148,7 @@ h1 {
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  text-align: center;
 }
 
 .score {

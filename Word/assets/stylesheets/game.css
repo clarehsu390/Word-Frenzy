@@ -1,0 +1,67 @@
+.time-left {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 36px;
+  color: white;
+}
+
+.timer {
+  margin: auto;
+}
+@keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+  }
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  width: 170px;
+}
+
+#feedback {
+  text-align: center;
+  z-index: 99;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 36px;
+  color: white;
+  animation-duration: 3s;
+  list-style: none;
+
+  -webkit-animation-name: Floatingx;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: Floating;
+    -moz-animation-duration: 3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+
+
+}
+
+@-webkit-keyframes Floatingx {
+    from {-webkit-transform:translate(0, 0px);}
+    65% {-webkit-transform:translate(0, 15px);}
+    to {-webkit-transform: translate(0, -0px);}
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+  
+}
+
+.submitted {
+  font-size: 30px;
+}

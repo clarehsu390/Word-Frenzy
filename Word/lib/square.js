@@ -1,13 +1,20 @@
-const LETTERS = ["E", "E", "E", "E", "E", "E", "E", "T", "T", "T", "T", "O", "O", "O", "O", "A", "A", "A", "A", "I", "I", "I", "I", "N", "N", "S", "S", "R", "R", "H", "H", "D", "L", "L", "U", "U", "C", "C","M",
-"F", "Y", "W", "G", "P", "B", "V", "K", "X", "Q", "J", "Z"];
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const VOWELS = "AEIOU";
 
 class Square {
   constructor() {
-    this.letter = "";
+    this.squares = [];
+    this.randomLetter = this.randomLetter.bind(this);
   }
 
   randomLetter() {
-    return LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    let random = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    this.squares.push(random);
+
+  }
+
+  ensureVowel() {
+
   }
 }
 

@@ -65,7 +65,7 @@ class Game {
         wordArr.push(word);
         score += 5;
         $(".score").text(`${score}`);
-        $("#feedback").text('Great!');
+        $("#feedback").append('<li>Great!</li>');
         $(".submitted").append(`<li>${word}</li>`);
       }
 
@@ -75,13 +75,16 @@ class Game {
         wordArr.push(word);
         score += (word.length - 3);
         $(".score").text(`${score}`);
-        $("#feedback").text('What a superstar!');
+        $("#feedback").append('<li>What a superstar!</li>');
         $(".submitted").append(`<li>${word}</li>`);
       }
       if (!trie.contains(word.toLowerCase()) || word.length <= 2) {
-        $("#feedback").text("Try Again!");
+        $("#feedback").append("<li>Try Again!</li>");
       }
       word = "";
+      setTimeout(function() {
+        $("#feedback").empty();
+      }, 3000);
     });
   }
 
@@ -108,7 +111,7 @@ class Game {
   }
 
   startButton() {
-    $(".game").append("<button class=start>START</button>");
+    $(".body").append("<button class=start>START</button>");
     $(".start").on("click", this.newGame);
 
   }

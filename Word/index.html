@@ -3,7 +3,7 @@
     <title>Word Frenzy</title>
     <script src="https://unpkg.com/lodash@4.16.6"></script>
     <link rel="stylesheet" href="./assets/stylesheets/board.css">
-    <link rel="stylesheet" href="./assets/stylesheets/timer.css">
+    <link rel="stylesheet" href="./assets/stylesheets/game.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
@@ -15,26 +15,30 @@
   <body class="gray">
     <script type="text/javascript" src="./lib/bundle.js"></script>
     <h1>Word Frenzy</h1>
-    <div class="game">
     <div class="body">
+    <div class="numbers">
+    <div class="time-left">Time Left:
+      <div class="timer">
+        100
+      </div>
+    </div>
+    <div class="total-score">Score:
+      <div class="score">0
+      </div>
+    </div>
+  </div>
+
+    <div class="main">
       <div class="word">
         <span id="potential"></span>
       </div>
-    <div class="board"></div>
-    <ul class="submitted">
+      <div class="board"></div>
+    </div>
 
-    </ul>
-  </div>
-  <div class="time-left">Time Left:
-    <div class="timer">
-      100
+    <div class="sidebar">
+      <div id="feedback" class="animated bounceUp"></div>
+      <ul class="submitted">Submitted</ul>
     </div>
   </div>
-    <div class="total-score">Score:
-    <div class="score">0
-    </div>
-    </div>
-  </div>
-  <div id="feedback" class="animated slideUp"></div>
-  </body>
+</body>
 </html>
