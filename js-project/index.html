@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Word Frenzy</title>
+    <script src="https://unpkg.com/lodash@4.16.6"></script>
+    <link rel="stylesheet" href="./assets/stylesheets/board.css">
+    <link rel="stylesheet" href="./assets/stylesheets/game.css">
+    <link rel="stylesheet" href="./assets/stylesheets/splash.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link rel="stylesheet" href="http://icono-49d6.kxcdn.com/icono.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  </head>
+  <div id="splash"></div>
+  <body class="gray">
+    <script type="text/javascript" src="./lib/bundle.js"></script>
+    <h1>Word Frenzy</h1>
+    <div class="body">
+    <div class="numbers">
+    <div class="time-left">Time Left:
+      <div class="timer">
+        100
+      </div>
+    </div>
+    <div class="total-score">Score:
+      <div class="score">0
+      </div>
+    </div>
+  </div>
+
+    <div class="main">
+      <div class="word">
+        <span id="potential"></span>
+      </div>
+      <div class="board"></div>
+      <span class=icono-reset>Reset</span>
+    </div>
+
+    <div class="sidebar">
+
+      <div id="feedback" class="animated fadeOut"></div>
+      <ul class="submitted">Submitted</ul>
+    </div>
+  </div>
+</body>
+</html>
