@@ -133,7 +133,7 @@ class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
     this.word = "";
-    this.replace();
+    this.replace = this.replace.bind(this);
   }
 
   makeBoard(x) {
@@ -146,16 +146,15 @@ class Board {
   }
 
   replace() {
-    $(".square").mouseup(function() {
+
       const $selected = $(".selected");
       $selected.each(function(index) {
         const letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
         let newLetter = $($selected[index]);
         newLetter.text(letter);
       });
-      $(".selected").addClass("animated slideInUp");
+      $(".selected").addClass("animated fadeInUpBig");
       $(".square").removeClass("selected");
-    });
 
   }
 
@@ -209,6 +208,10 @@ $( () => {
  game.startButton();
 });
 
+$(document).ready(function () {
+    $('#splash').css('opacity', '0.5');
+});
+
 
 /***/ }),
 /* 5 */
@@ -229,10 +232,12 @@ class Game {
     this.score = 0;
     this.interval = null;
     this.trie = new Trie();
-    this.time = 100;
+    this.time = 5;
     this.timer = this.timer.bind(this);
     this.newGame = this.newGame.bind(this);
+    this.reset = this.reset.bind(this);
     this.startButton();
+    this.resetButton();
   }
 
   dictionary(data) {
@@ -245,13 +250,14 @@ class Game {
 
   handleClick() {
     let trie = this.trie;
+    console.log(trie);
     let score = this.score;
-    console.log(this.trie);
     let word = "";
     let display = "";
     let clicking = false;
     let wordArr = [];
-    $(".square").mousedown($.proxy(function(){
+    let board = this.board;
+    $(".square").mousedown(function(){
        clicking = true;
       $(this).toggleClass('highlight');
       $(this).toggleClass("selected");
@@ -259,7 +265,7 @@ class Game {
       display += $(this).text();
       $("#potential").text(display);
       return false;
-    }));
+    });
 
     $(".square").mouseover(function(){
       if (clicking) {
@@ -283,6 +289,8 @@ class Game {
         $(".score").text(`${score}`);
         $("#feedback").append('<li>Great!</li>');
         $(".submitted").append(`<li>${word}</li>`);
+        console.log(word);
+        board.replace();
       }
 
       if (word.length > 3 &&
@@ -293,14 +301,17 @@ class Game {
         $(".score").text(`${score}`);
         $("#feedback").append('<li>What a superstar!</li>');
         $(".submitted").append(`<li>${word}</li>`);
+        board.replace();
       }
       if (!trie.contains(word.toLowerCase()) || word.length <= 2) {
         $("#feedback").append("<li>Try Again!</li>");
+        $(".square").removeClass("selected");
       }
       word = "";
       setTimeout(function() {
         $("#feedback").empty();
-      }, 3000);
+      }, 2000);
+      console.log(wordArr);
     });
   }
 
@@ -313,7 +324,10 @@ class Game {
   timer() {
     this.time -= 1;
     if (this.time <= 0) {
-      $(".timer").text(`Time's up!`);
+      $(".timer").text(`0`);
+      $("body").append("<div id=game-over></div>");
+      $("#game-over").text("Game Over!");
+      $("body").append("<div class=overlay></div>");
     }
     else {
       $(".timer").text(`${this.time}`);
@@ -329,7 +343,20 @@ class Game {
   startButton() {
     $(".body").append("<button class=start>START</button>");
     $(".start").on("click", this.newGame);
+    $(".start").click(function() {
+      $("#splash").fadeOut("slow");
+    });
 
+  }
+
+  reset() {
+    $(".board").empty();
+    this.board = new Board(8);
+    this.handleClick();
+    }
+
+  resetButton() {
+    $('.icono-reset').on("click", this.reset);
   }
 
 

@@ -5,7 +5,7 @@ class Board {
   constructor(x) {
     this.board = this.makeBoard(x);
     this.word = "";
-    this.replace();
+    this.replace = this.replace.bind(this);
   }
 
   makeBoard(x) {
@@ -18,16 +18,15 @@ class Board {
   }
 
   replace() {
-    $(".square").mouseup(function() {
+
       const $selected = $(".selected");
       $selected.each(function(index) {
         const letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
         let newLetter = $($selected[index]);
         newLetter.text(letter);
       });
-      $(".selected").addClass("animated slideInUp");
+      $(".selected").addClass("animated fadeInUpBig");
       $(".square").removeClass("selected");
-    });
 
   }
 

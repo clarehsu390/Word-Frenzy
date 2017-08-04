@@ -6,3 +6,7 @@ $( () => {
  game.handleClick();
  game.startButton();
 });
+
+$(document).ready(function () {
+    $('#splash').css('opacity', '0.5');
+});

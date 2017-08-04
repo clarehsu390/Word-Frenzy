@@ -25,23 +25,27 @@
   justify-content: center;
   height: 300px;
   width: 170px;
+  padding: 10px;
 }
 
 #feedback {
+  margin: auto;
   text-align: center;
-  z-index: 99;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 36px;
+  z-index: 1;
+  font-family: 'Megrim';
+  font-size: 48px;
+  font-weight: bolder;
   color: white;
   animation-duration: 3s;
   list-style: none;
+  position: absolute;
 
   -webkit-animation-name: Floatingx;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: ease-in-out;
     -moz-animation-name: Floating;
-    -moz-animation-duration: 3s;
+    -moz-animation-duration: 2s;
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: ease-in-out;
 
@@ -59,9 +63,35 @@
   flex-direction: column;
   font-family: 'Quicksand', sans-serif;
   color: white;
-  
+
 }
 
 .submitted {
   font-size: 30px;
+  height: 400px;
+  margin: auto;
+}
+
+.submitted li {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.icono-reset {
+  font-size: 20px;
+  font-family: 'Megrim';
+  color: #F2D388;
+
+  width: 50px;
+  border-radius: 10px;
+  left: 400px;
+}
+
+span.icono-reset {
+  color: black;
+  font-weight: bold;
+}
+
+.icono-reset:hover {
+  cursor: pointer;
 }
